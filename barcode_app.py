@@ -10,14 +10,14 @@ from reportlab.lib import colors
 from reportlab.pdfgen import canvas
 from reportlab.graphics.barcode import code128
 
-# ── Page config ────────────────────────────────────────────────
+# Page config
 st.set_page_config(
     page_title="Barcode Generator",
     page_icon="▌▌▌ ▌▌ ▌",
     layout="wide",
 )
 
-# ── Styles ─────────────────────────────────────────────────────
+# Styles
 st.markdown("""
 <style>
     /* ── Global background + text ── */
@@ -105,10 +105,10 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# ── Layout constants ───────────────────────────────────────────
+# Layout constants
 FONT_NAME = "Helvetica"
 
-# ── Core functions ─────────────────────────────────────────────
+# Core functions
 
 def read_excel(file, has_header: bool) -> dict:
     """Return {sheet_name: DataFrame} for all sheets.
@@ -233,7 +233,7 @@ def pdf_preview_html(pdf_bytes: bytes) -> str:
     """
 
 
-# ── UI ─────────────────────────────────────────────────────────
+# UI
 
 st.title("▌▌▌ ▌▌ ▌  Barcode PDF Generator")
 st.caption("Upload an Excel file → pick sheets & column → generate A4 barcode PDF")
@@ -305,7 +305,7 @@ with left:
     generate_btn = st.button("🖨️ Generate PDF", disabled=not (uploaded and selected_sheets and selected_col != "—"))
 
 
-# ── Generation ─────────────────────────────────────────────────
+# Generation
 
 if generate_btn and uploaded and selected_sheets:
     raw = read_excel(uploaded, has_header)

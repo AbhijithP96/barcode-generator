@@ -1,0 +1,4 @@
+openpyxl
+reportlab
+pillow
+streamlit
